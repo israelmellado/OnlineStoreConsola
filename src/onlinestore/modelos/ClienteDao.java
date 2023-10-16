@@ -13,7 +13,9 @@ import java.util.ArrayList;
 public class ClienteDao {
       
     ArrayList<Cliente> lista_clientes;
-
+    /**
+     * Constructor de array list
+     */
     public ClienteDao() {
         
         
@@ -44,9 +46,9 @@ public class ClienteDao {
     * Añadir artículo a la lista
     */
     public void añadirArticulo(Cliente art){
-       this.lista_clientes.add(art);
+         this.lista_clientes.add(art);
     }
     public void eliminarRegistro(int i){
-       this.lista_clientes.remove(i);
+         this.lista_clientes.remove(i);
     }
 }
