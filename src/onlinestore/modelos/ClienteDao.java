@@ -18,8 +18,8 @@ public class ClienteDao {
         
         
         lista_clientes = new ArrayList<Cliente>();
-        Cliente clie1=new Cliente(0,"12345678A","Jose","Calle pelada","paco@gmail.com","");
-        Cliente clie2=new Cliente(1,"00000001A","Maria","Calle pelada","paco@gmail.com","");   
+        Cliente clie1=new Cliente(0,"12345678A","Jose","Calle sillin","jose@gmail.com","");
+        Cliente clie2=new Cliente(1,"00000001A","Maria","Calle rueda","maria@gmail.com","");   
         lista_clientes.add(clie1);
         lista_clientes.add(clie2);
     }
