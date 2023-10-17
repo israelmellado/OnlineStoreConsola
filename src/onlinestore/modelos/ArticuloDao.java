@@ -51,4 +51,6 @@ public class ArticuloDao {
     public void eliminarRegistro(int i){
        this.lista_articulos.remove(i);
     }
+    
+    
 }

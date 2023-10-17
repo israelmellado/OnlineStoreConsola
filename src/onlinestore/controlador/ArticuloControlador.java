@@ -59,14 +59,19 @@ public class ArticuloControlador {
           
        System.out.println("Código:  ");
        String cod=sc.next();
+       sc.nextLine();
        System.out.println("Descripción:   ");
        String des=sc.next();
+       sc.nextLine();
        System.out.println("Precio: ");
        Double pre=sc.nextDouble();
+       
        System.out.println("Gastos envío:   ");
        Double gas=sc.nextDouble();
+       
        System.out.println("Cantidad:     ");
        int cant=sc.nextInt();
+       
        this.artDao.añadirArticulo(new Articulo(artDao.getLista_articulos().size()+1,cod,des,pre,gas,cant));
    }
    
@@ -76,5 +81,13 @@ public class ArticuloControlador {
     System.out.println("Selecciona el Id registro a eliminar: ");
     int cant=sc.nextInt();
     this.artDao.eliminarRegistro(cant);
-  }  
+  }
+  
+ public String devolverArticuloCodigo(int x){
+           return this.lista_articulos.get(x).getCodigo();
+    }
+ public Articulo devolverArticulo(int x){
+ 
+          return this.lista_articulos.get(x);
+ }
 }

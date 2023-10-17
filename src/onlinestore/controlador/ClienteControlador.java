@@ -106,5 +106,15 @@ public class ClienteControlador {
          
        this.cliDao.añadirArticulo(new Cliente(cliDao.getLista_clientes().size(),identificador.getDniIntroducido(),nom,dom,correo,tipo));
    }
-    
+  
+   public String devolverClienteNombre(int x){
+   
+     return this.lista_clientes.get(x).getNombre();
+   
+   }
+   public Cliente devolverCliente(int x){
+ 
+          return this.lista_clientes.get(x);
+ }
+   
 }

@@ -5,6 +5,8 @@
 package onlinestore.controlador;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 import onlinestore.Vista.VistaPedido;
 import onlinestore.modelos.Pedido;
@@ -35,12 +37,51 @@ public class PedidoControlador {
         }    
    }
     public void añadirRegistroPedido(Scanner sn,ArticuloControlador art,ClienteControlador cli){
-        art.actualizarVista();
+         /**ARTICULO**/
         System.out.println("selecciona un articulo:");
+        art.actualizarVista();
         int articulo=sn.nextInt();
-        cli.actualizarVistaCliente();
+        /*CLIENTE*/
         System.out.println("Selecciona un cliente");
+        cli.actualizarVistaCliente();
         int cliente=sn.nextInt();
+        /*CANTIDAD*/
+        System.out.println("Selecciona un cantidad");
+        int cantidad=sn.nextInt();
+        /*FECHA*/
+        System.out.println("Cuando aceptes se inscribirá la fecha automática");
+        Date fechaPedido= new Date();
+        Date fechaMañana= new Date();
+        System.out.println("Today:    "+fechaPedido);
+        Calendar c = Calendar.getInstance();
+        c.setTime(fechaPedido);
+        c.add(Calendar.DATE, 1);
+        fechaMañana = c.getTime();
+        System.out.println("Tomorrow: "+fechaMañana);
+        //devolver nombre o id registro.
+        String articl = art.devolverArticuloCodigo(articulo);
+        String client = cli.devolverClienteNombre(cliente);
+        //Mostrar Datos seleccionados
+        this.vista.registrosComprobarAntesAñadir(articl,client,cantidad,fechaPedido,fechaMañana);
+        System.out.println("Si estás de acuerdo pulsa y de lo contrario n :_______  Selecciona (y/n)   ");
+        String tipo=sn.next();
+        
+        if (tipo.equals("y")) {
+                if(pediDao.getLista_pedidos().isEmpty()){
+                    this.pediDao.añadirPedido(new Pedido(0,
+                            art.devolverArticulo(articulo),
+                            cli.devolverCliente(cliente),1,fechaPedido));
+                }else{
+                    this.pediDao.añadirPedido(new Pedido(pediDao.getLista_pedidos().size(),
+                            art.devolverArticulo(articulo),
+                            cli.devolverCliente(cliente),1,fechaPedido));
+                }
+                System.out.println("Registro introducido correctamente");
+            }else {
+              System.out.println("Has decidido no continuar con el registro:");
+            }
+        
+        this.actualizarVistaPedidos();
         
     }
     
