@@ -30,11 +30,14 @@ public class PedidoControlador {
     }
      public void actualizarVistaPedidos(){
       
-      this.lista_pedidos = this.pediDao.getLista_pedidos();
-       for (int i=0;i<lista_pedidos.size();i++) {
-            vista.mostrarPedidoDetalles(lista_pedidos.get(i).toString());
-             
-        }    
+       this.lista_pedidos = this.pediDao.getLista_pedidos();
+       if(!this.lista_pedidos.isEmpty()){
+          for (int i=0;i<lista_pedidos.size();i++) {
+              vista.mostrarPedidoDetalles(lista_pedidos.get(i).toString());
+          } 
+       }else{
+             vista.pedidoControlMensaje(1);
+       }
    }
     public void añadirRegistroPedido(Scanner sn,ArticuloControlador art,ClienteControlador cli){
          /**ARTICULO**/
